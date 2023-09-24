@@ -61,14 +61,16 @@ else: print("Четных чисел нет")
 order = int(input("Введите кол-во деталей для заказа "))
 employee1, employee2 = input("Хотите чтобы работал первый сотрудник? "), input("Хотите чтобы работал второй сотрудник? ")
 work_time = 12 # стандартная рабочая смена одного сотрудника 12 часов
-if employee1 == "Yes" and employee2 == "Yes":
-    if order > (16 * (work_time - 2)): print("Слишком большой заказ, уменьшите кол-во деталей для заказа")
-    else: print((f"Стоимость заказа составит {order * 2}"))
-elif employee1 == "Yes" and employee2 == "No":
-    if order > 100: print("Слишком большой заказ, уменьшите кол-во деталей для заказа")
-    else: print(f"Стоимость заказа составит {order * 1}")
-elif employee1 == "No" and employee2 == "Yes":
-    if order > 90: print("Слишком большой заказ, уменьшите кол-во деталей для заказа")
-    else: print(f"Стоимость заказа составит {order * 1.5}")
-else: print("Работа простаивает")
+if (employee1 == "Yes" or employee1 == "No") and (employee2 == "Yes" or employee2 == "No"):
+    if employee1 == "Yes" and employee2 == "Yes":
+        if order > (16 * (work_time - 2)): print("Слишком большой заказ, уменьшите кол-во деталей для заказа")
+        else: print((f"Стоимость заказа составит {order * 2}"))
+    elif employee1 == "Yes" and employee2 == "No":
+        if order > 100: print("Слишком большой заказ, уменьшите кол-во деталей для заказа")
+        else: print(f"Стоимость заказа составит {order * 1}")
+    elif employee1 == "No" and employee2 == "Yes":
+        if order > 90: print("Слишком большой заказ, уменьшите кол-во деталей для заказа")
+        else: print(f"Стоимость заказа составит {order * 1.5}")
+    else: print("Работа простаивает")
+else: print("Введите корректные данные по работе сотрудников")
 # --------------------------------------------------------------------------------------
