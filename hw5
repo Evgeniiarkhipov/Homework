@@ -1,0 +1,144 @@
+# -----------------------------------Задание 1-------------------------------------------------------
+"""
+Дано:
+    • 3 стороны треугольника
+Проверить существует ли треугольник
+"""
+a = int(input("Введите длину 1-ой стороны треугольника"))
+b = int(input("Введите длину 1-ой стороны треугольника"))
+c = int(input("Введите длину 1-ой стороны треугольника"))
+if a + b < c or a + c < b or c + b < a: print("Треугольник существует")
+else: print("Треугольник не существует")
+# ---------------------------------------------------------------------------------------------------
+
+# -----------------------------------Задание 2-------------------------------------------------------
+"""
+Дано:
+    • из чего переводим: часов, минут, секунд (что-то одно на выбор пользователя)
+    • во что переводим: часов, минут, секунд (что-то одно на выбор пользователя)
+    • кол-во переводимых единиц
+
+реализовать интерфейс для перевода из (часов, минут, секунд) в (часов, минут, секунд)
+"""
+user_choise = int(input("Выберите из чего будем переводить 1 - часы, 2 - минуты, 3 - секунды "))
+user_conversion = int(input("Выберите во что будем переводить 1 - часы, 2 - минуты, 3 - секунды "))
+time = int(input("Введите количество конвертируемых единиц "))
+# Задаем начальные параметры выводимого текста часов, минут и секунд
+# с особенностями русского языка
+hours = ""
+minutes = ""
+seconds = ""
+con_result = ""
+# Вводим переменную для учета результата конвертации
+result = 0
+# Получаем параметры выводимого текста для часов, минут или секунд
+if time == 1 or time % 10 == 1:
+    hours = "час"
+    minutes = "минута"
+    seconds = "секунда"
+elif (time > 1 and time < 5) or (time % 10 > 1 and time % 10 < 5):
+    hours = "часа"
+    minutes = "минуты"
+    seconds = "секунды"
+else:
+    hours = "часов"
+    minutes = "минут"
+    seconds = "секунд"
+# Проводим конверсию и выводим искомый результат, с учетом вывода ковертируемого формата часов, минут или секунд
+if user_choise == 1 and user_conversion == 1: print(f"результат тотже {time}")
+elif user_choise == 1 and user_conversion == 2:
+    result = time * 60
+    if result == 1 or result % 10 == 1:
+        con_result = "минута"
+    elif (result > 1 and result < 5) or (result % 10 > 1 and result % 10 < 5):
+        con_result = "минуты"
+    else:
+        con_result = "минут"
+    print(f"{time} {hours} равно {result} {con_result}")
+elif user_choise == 1 and user_conversion == 3:
+    result = time * 60 ** 2
+    if result == 1 or result % 10 == 1:
+        con_result = "секунда"
+    elif (result > 1 and result < 5) or (result % 10 > 1 and result % 10 < 5):
+        con_result = "секунды"
+    else:
+        con_result = "секунд"
+    print(f"{time} {hours} равно {result} {con_result}")
+elif user_choise == 2 and user_conversion == 1:
+    result = time / 60
+    if result == 1 or result % 10 == 1:
+        con_result = "час"
+    elif (result > 1 and result < 5) or (result % 10 > 1 and result % 10 < 5):
+        con_result = "часа"
+    else:
+        con_result = "часов"
+    print(f"{time} {minutes} равно {result} {con_result}")
+elif user_choise == 2 and user_conversion == 2: print(f"результат тотже {time}")
+elif user_choise == 2 and user_conversion == 3:
+    result = time * 60
+    if result == 1 or result % 10 == 1:
+        con_result = "секунда"
+    elif (result > 1 and result < 5) or (result % 10 > 1 and result % 10 < 5):
+        con_result = "секунды"
+    else:
+        con_result = "секунд"
+    print(f"{time} {minutes} равно {result} {con_result}")
+elif user_choise == 3 and user_conversion == 1:
+    result = time / 60 ** 2
+    if result == 1 or result % 10 == 1:
+        con_result = "час"
+    elif (result > 1 and result < 5) or (result % 10 > 1 and result % 10 < 5):
+        con_result = "часа"
+    else:
+        con_result = "часов"
+    print(f"{time} {seconds} равно {result} {con_result}")
+elif user_choise == 3 and user_conversion == 2:
+    result = time / 60
+    if result == 1 or result % 10 == 1:
+        con_result = "минута"
+    elif (result > 1 and result < 5) or (result % 10 > 1 and result % 10 < 5):
+        con_result = "минуты"
+    else:
+        con_result = "минут"
+    print(f"{time} {seconds} равно {result} {con_result}")
+elif user_choise == 3 and user_conversion == 3: print(f"результат тотже {time}")
+else: print("Введены некорректные данные")
+# -------------------------------------------------------------------------------------------------------------------
+
+# -------------------------------------------Задача № 3----------------------------------
+#-------------------------ЗАДАЧА-----------------------------#
+# Перевод Из мм в м, из м в км (и наоборот)
+
+l = int(input("Введите")) #добавьте проверку на >=0
+if l <= 0: print("Введенные данные не корректны")
+
+start = 'm' #  из которого делается перевод
+end = 'km' #  в который делается перевод
+match start:
+    case 'm':
+        match end:
+            case 'mm':
+                print(l * 1000)
+            case 'km':
+                print(l / 1000)
+            case _:
+                print("Некорректные данные")
+    case 'mm':
+        match end:
+            case 'km':
+                print(l / 1000 / 1000)
+            case 'm':
+                print(l / 1000)
+            case _:
+                print("Некорректные данные")
+    case 'km':
+        match end:
+            case 'mm':
+                print(l * 1000 * 1000)
+            case 'm':
+                print(l * 1000)
+            case _:
+                print("Некорректные данные")
+    case _:
+        print("Некорректные данные")
+#-----------------------------------------------------------------------------------------------------------------------
