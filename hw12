@@ -16,13 +16,12 @@ print(s_part1 + s_part2)
 задача
 Посчитайте кол-во чисел в произвольной строке (число - это набор цифр, перед число и после числа ставятся пробелы)
 """
-s = '-abc 1 2 33 csa -444 c 55 -1'
+s = '-abc 1 2 -33.7 cs.a 444 c 55 -1 ..'
 count = 0
+s = s.replace('.','')
 s = s.split()
 #print(s)
 for i in range(len(s)):
-    if s[i][:1:] == '-' and s[i][1::].isdigit():
-        count += 1
-    if s[i].isdigit():
+    if s[i][:1:] == '-' and s[i][1::].isdigit() or s[i].isdigit():
         count += 1
 print(count)
